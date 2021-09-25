@@ -17,8 +17,22 @@ public class ServerTestServlet extends HttpServlet{
 //		res.setContentType("text/plain");
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
-		pw.print("<b>some bold text:: </b>" + new Date());
-		res.setIntHeader("refresh", 5);
+		pw.print("<b>some bold text </b><h1>" + new Date() + "</h1>");
+		
+		pw.print("<br>Current Servlet class object hashcode:: <b>" + this.hashCode() + "</b>");
+		pw.print("<br>Request object hashcode:: <b>" + req.hashCode() + "</b>");
+		pw.print("<br>Response object hashcode:: <b>" + res.hashCode() + "</b>");
+		pw.print("<br>Current object thread hashcode:: <b>" + Thread.currentThread().hashCode() + "</b>");
+		pw.print("<br>Current object thread Name:: <b>" + Thread.currentThread().getName() + "</b>");
+		
+		
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+//		res.setIntHeader("refresh", 5);
 		pw.close(); 
 	}
 
